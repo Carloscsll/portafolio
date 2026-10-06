@@ -17,11 +17,15 @@ const OPTIMIZED_DIR = path.join(UPLOADS_DIR, 'optimized');
 const THUMBS_DIR = path.join(UPLOADS_DIR, 'thumbnails');
 const ORIGINAL_DIR = path.join(UPLOADS_DIR, 'original');
 
-[DATA_DIR, UPLOADS_DIR, OPTIMIZED_DIR, THUMBS_DIR, ORIGINAL_DIR].forEach(dir => {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-});
+try {
+  [DATA_DIR, UPLOADS_DIR, OPTIMIZED_DIR, THUMBS_DIR, ORIGINAL_DIR].forEach(dir => {
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+  });
+} catch (err) {
+  // Gracefully handle read-only environments (Vercel Serverless)
+}
 
 // Database file helpers
 const PROJECTS_FILE = path.join(DATA_DIR, 'projects.json');
@@ -30,12 +34,11 @@ const MESSAGES_FILE = path.join(DATA_DIR, 'messages.json');
 
 function readJsonFile(filePath, defaultValue) {
   try {
-    if (!fs.existsSync(filePath)) {
-      fs.writeFileSync(filePath, JSON.stringify(defaultValue, null, 2), 'utf-8');
-      return defaultValue;
+    if (fs.existsSync(filePath)) {
+      const data = fs.readFileSync(filePath, 'utf-8');
+      return JSON.parse(data);
     }
-    const data = fs.readFileSync(filePath, 'utf-8');
-    return JSON.parse(data);
+    return defaultValue;
   } catch (err) {
     console.error(`Error reading ${filePath}:`, err);
     return defaultValue;
@@ -49,7 +52,7 @@ function writeJsonFile(filePath, data) {
     fs.renameSync(tempPath, filePath);
     return true;
   } catch (err) {
-    console.error(`Error writing ${filePath}:`, err);
+    console.warn(`Filesystem write skipped (read-only):`, err.message);
     return false;
   }
 }

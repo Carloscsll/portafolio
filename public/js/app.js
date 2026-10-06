@@ -5,11 +5,60 @@
 
 import { initAdminPanel } from './admin.js';
 
+const DEFAULT_FALLBACK_SETTINGS = {
+  name: "Carlos Casillas",
+  tagline: "Fotografía y Dirección Visual",
+  heroSubtitle: "Proyectos visuales, cinematografía documental y retratos de autor.",
+  bio: "Soy fotógrafo y realizador audiovisual enfocado en capturar la esencia natural de las personas, espacios y proyectos comerciales. Mi trabajo busca una estética sobria, atemporal y respetuosa con la luz natural y las historias reales.",
+  location: "Madrid / Disponible a nivel global",
+  email: "carlos.casillas475@gmail.com",
+  phone: "+34 600 000 000",
+  instagram: "https://www.instagram.com/bycarloscasillas/",
+  whatsapp: "+52 475-954-8030",
+  vimeo: "",
+  profileImage: "/uploads/optimized/1791323595441-9bb65a0b4113-772171169_17939864538328972_8688357884332581097_n.webp",
+  categories: [
+    { id: "fotografia", name: "Fotografía" },
+    { id: "video", name: "Video" },
+    { id: "comercial", name: "Comercial" },
+    { id: "retrato", name: "Retrato" },
+    { id: "eventos", name: "Eventos" },
+    { id: "editorial", name: "Editorial" }
+  ],
+  services: [
+    {
+      id: "srv-1",
+      title: "Fotografía Editorial & Comercial",
+      description: "Campañas de marca, lookbooks, catálogos de producto y proyectos editoriales cuidando minuciosamente la iluminación, composición y dirección de arte."
+    },
+    {
+      id: "srv-2",
+      title: "Dirección y Video Cinematográfico",
+      description: "Piezas audiovisuales con narrativa cinematográfica, spots comerciales, documentales breves y videos de concepto con etalonaje digital profesional."
+    },
+    {
+      id: "srv-3",
+      title: "Retrato de Autor & Personal Branding",
+      description: "Sesiones de retrato en estudio o localización natural para artistas, profesionales y marcas personales con un enfoque íntimo y atemporal."
+    },
+    {
+      id: "srv-4",
+      title: "Cobertura Documental de Eventos",
+      description: "Registro visual discreto y elegante de eventos culturales, corporativos, conferencias y experiencias exclusivas sin alterar la naturalidad del momento."
+    },
+    {
+      id: "srv-5",
+      title: "Edición y Color Grading",
+      description: "Postproducción visual, revelado digital de alta resolución y corrección de color profesional para proyectos de fotografía y video."
+    }
+  ]
+};
+
 // Global State
 export const state = {
-  settings: null,
+  settings: DEFAULT_FALLBACK_SETTINGS,
   projects: [],
-  categories: [],
+  categories: DEFAULT_FALLBACK_SETTINGS.categories,
   currentRoute: window.location.pathname,
   activeLightbox: {
     isOpen: false,
@@ -61,39 +110,40 @@ export function showToast(message, type = 'success') {
 export async function fetchSettings() {
   try {
     const res = await fetch('/api/settings');
-    if (!res.ok) throw new Error('Error al cargar configuración');
-    state.settings = await res.json();
-    state.categories = state.settings.categories || [];
-    updateGlobalBrand();
-    return state.settings;
+    if (res.ok) {
+      const data = await res.json();
+      state.settings = { ...DEFAULT_FALLBACK_SETTINGS, ...data };
+      state.categories = state.settings.categories || DEFAULT_FALLBACK_SETTINGS.categories;
+    }
   } catch (err) {
-    console.error(err);
-    return null;
+    console.warn('Usando configuración fallback:', err);
   }
+  updateGlobalBrand();
+  return state.settings;
 }
 
 export async function fetchProjects(category = '') {
   try {
     const query = category ? `?category=${encodeURIComponent(category)}` : '';
     const res = await fetch(`/api/projects${query}`);
-    if (!res.ok) throw new Error('Error al cargar proyectos');
-    state.projects = await res.json();
-    return state.projects;
+    if (res.ok) {
+      state.projects = await res.json();
+      return state.projects;
+    }
   } catch (err) {
-    console.error(err);
-    return [];
+    console.warn('Error al cargar proyectos del servidor:', err);
   }
+  return state.projects || [];
 }
 
 export async function fetchProjectBySlug(slug) {
   try {
     const res = await fetch(`/api/projects/${encodeURIComponent(slug)}`);
-    if (!res.ok) throw new Error('Proyecto no encontrado');
-    return await res.json();
+    if (res.ok) return await res.json();
   } catch (err) {
-    console.error(err);
-    return null;
+    console.warn('Error fetching project:', err);
   }
+  return (state.projects || []).find(p => p.slug === slug || p.id === slug) || null;
 }
 
 // Update Branding Elements across the page
@@ -167,30 +217,37 @@ export async function handleRoute() {
   window.scrollTo(0, 0);
 
   // Render Loader
-  appRoot.innerHTML = `
-    <div class="page-loader">
-      <div class="loader-spinner"></div>
-    </div>
-  `;
+  if (appRoot) {
+    appRoot.innerHTML = `
+      <div class="page-loader">
+        <div class="loader-spinner"></div>
+      </div>
+    `;
+  }
 
-  // Route Dispatcher
-  if (path === '/' || path === '') {
+  // Route Dispatcher with fail-safe error handling
+  try {
+    if (path === '/' || path === '') {
+      await renderHome();
+    } else if (path === '/trabajos') {
+      await renderPortfolio();
+    } else if (path.startsWith('/proyecto/')) {
+      const slug = path.split('/proyecto/')[1];
+      await renderProject(slug);
+    } else if (path === '/sobre-mi') {
+      await renderAbout();
+    } else if (path === '/servicios') {
+      await renderServices();
+    } else if (path === '/contacto') {
+      await renderContact();
+    } else if (path.startsWith('/admin')) {
+      initAdminPanel(appRoot);
+    } else {
+      renderNotFound();
+    }
+  } catch (err) {
+    console.error('Error al renderizar la ruta:', err);
     await renderHome();
-  } else if (path === '/trabajos') {
-    await renderPortfolio();
-  } else if (path.startsWith('/proyecto/')) {
-    const slug = path.split('/proyecto/')[1];
-    await renderProject(slug);
-  } else if (path === '/sobre-mi') {
-    await renderAbout();
-  } else if (path === '/servicios') {
-    await renderServices();
-  } else if (path === '/contacto') {
-    await renderContact();
-  } else if (path.startsWith('/admin')) {
-    initAdminPanel(appRoot);
-  } else {
-    renderNotFound();
   }
 }
 
@@ -805,7 +862,7 @@ function closeMobileMenu() {
 // --------------------------------------------------------------------------
 // GLOBAL EVENT LISTENERS & INITIALIZATION
 // --------------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', async () => {
+async function initializeApp() {
   // 1. Initial Data Fetch
   await fetchSettings();
 
@@ -846,6 +903,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const yr = document.getElementById('current-year');
   if (yr) yr.textContent = new Date().getFullYear().toString();
 
-  // Initial Route Render
+  // Initial Route Render immediately
   handleRoute();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  initializeApp();
+}
