@@ -1,0 +1,67 @@
+{
+  "name": "Carlos Casillas",
+  "tagline": "Fotografía y Dirección Visual",
+  "heroSubtitle": "Proyectos visuales, cinematografía documental y retratos de autor.",
+  "bio": "Soy fotógrafo y realizador audiovisual enfocado en capturar la esencia natural de las personas, espacios y proyectos comerciales. Mi trabajo busca una estética sobria, atemporal y respetuosa con la luz natural y las historias reales.",
+  "profileImage": "/uploads/optimized/1791323631461-26b9e8b82382-772171169_17939864538328972_8688357884332581097_n.webp",
+  "location": "Madrid / Disponible a nivel global",
+  "email": "carlos.casillas475@gmail.com",
+  "phone": "+34 600 000 000",
+  "instagram": "https://www.instagram.com/bycarloscasillas/",
+  "whatsapp": "+52 475-954-8030",
+  "vimeo": "",
+  "adminPassword": "admin",
+  "categories": [
+    {
+      "id": "fotografia",
+      "name": "Fotografía"
+    },
+    {
+      "id": "video",
+      "name": "Video"
+    },
+    {
+      "id": "comercial",
+      "name": "Comercial"
+    },
+    {
+      "id": "retrato",
+      "name": "Retrato"
+    },
+    {
+      "id": "eventos",
+      "name": "Eventos"
+    },
+    {
+      "id": "editorial",
+      "name": "Editorial"
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-1",
+      "title": "Fotografía Editorial & Comercial",
+      "description": "Campañas de marca, lookbooks, catálogos de producto y proyectos editoriales cuidando minuciosamente la iluminación, composición y dirección de arte."
+    },
+    {
+      "id": "srv-2",
+      "title": "Dirección y Video Cinematográfico",
+      "description": "Piezas audiovisuales con narrativa cinematográfica, spots comerciales, documentales breves y videos de concepto con etalonaje digital profesional."
+    },
+    {
+      "id": "srv-3",
+      "title": "Retrato de Autor & Personal Branding",
+      "description": "Sesiones de retrato en estudio o localización natural para artistas, profesionales y marcas personales con un enfoque íntimo y atemporal."
+    },
+    {
+      "id": "srv-4",
+      "title": "Cobertura Documental de Eventos",
+      "description": "Registro visual discreto y elegante de eventos culturales, corporativos, conferencias y experiencias exclusivas sin alterar la naturalidad del momento."
+    },
+    {
+      "id": "srv-5",
+      "title": "Edición y Color Grading",
+      "description": "Postproducción visual, revelado digital de alta resolución y corrección de color profesional para proyectos de fotografía y video."
+    }
+  ]
+}

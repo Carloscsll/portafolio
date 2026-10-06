@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carlos Mendoza — Fotografía & Dirección Visual</title>
+  <meta name="description" content="Portafolio profesional de fotografía y video. Proyectos editoriales, comerciales, cinematografía documental y retratos de autor.">
+  <meta name="keywords" content="fotógrafo, videógrafo, dirección visual, fotografía editorial, documental, cine, comercial, retrato">
+  <meta name="author" content="Carlos Mendoza">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Carlos Mendoza — Fotografía & Dirección Visual">
+  <meta property="og:description" content="Portafolio profesional de fotografía y video.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80">
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='sans-serif' font-weight='900' fill='%23111'>CM</text></svg>">
+
+  <!-- Typography: Plus Jakarta Sans for clean modernist Swiss feel & Newsreader for subtle editorial accents -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="theme-dark">
+
+  <!-- Minimal Header / Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="/" class="brand-link" data-route="/">
+        <span class="brand-name" id="brand-name">Carlos Mendoza</span>
+        <span class="brand-sub" id="brand-sub">Visual</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link" data-route="/">Inicio</a></li>
+          <li><a href="/trabajos" class="nav-link" data-route="/trabajos">Trabajos</a></li>
+          <li><a href="/sobre-mi" class="nav-link" data-route="/sobre-mi">Sobre mí</a></li>
+          <li><a href="/servicios" class="nav-link" data-route="/servicios">Servicios</a></li>
+          <li><a href="/contacto" class="nav-link" data-route="/contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/contacto" class="btn-direct-contact" data-route="/contacto">Iniciar Proyecto</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Navigation -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <span class="drawer-title" id="drawer-brand-name">Carlos Mendoza</span>
+      <button class="drawer-close" id="drawer-close" aria-label="Cerrar menú">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <ul class="drawer-list">
+        <li><a href="/" class="drawer-link" data-route="/"><span>01</span> Inicio</a></li>
+        <li><a href="/trabajos" class="drawer-link" data-route="/trabajos"><span>02</span> Trabajos</a></li>
+        <li><a href="/sobre-mi" class="drawer-link" data-route="/sobre-mi"><span>03</span> Sobre mí</a></li>
+        <li><a href="/servicios" class="drawer-link" data-route="/servicios"><span>04</span> Servicios</a></li>
+        <li><a href="/contacto" class="drawer-link" data-route="/contacto"><span>05</span> Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="drawer-footer">
+      <p class="drawer-location" id="drawer-location">Madrid / Disponible mundialmente</p>
+      <div class="drawer-socials" id="drawer-socials">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Main Content View -->
+  <main id="app-root" class="app-main" tabindex="-1">
+    <!-- Rendered by app.js router -->
+    <div class="page-loader" id="initial-loader">
+      <div class="loader-spinner"></div>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-container">
+      <div class="footer-col-brand">
+        <h3 class="footer-brand" id="footer-brand-name">Carlos Mendoza</h3>
+        <p class="footer-tagline" id="footer-tagline">Fotografía, Cinematografía y Dirección Visual.</p>
+        <p class="footer-avail" id="footer-avail">Disponible para proyectos comerciales y personales.</p>
+      </div>
+
+      <div class="footer-col-nav">
+        <h4 class="footer-title">Navegación</h4>
+        <ul class="footer-links">
+          <li><a href="/" data-route="/">Inicio</a></li>
+          <li><a href="/trabajos" data-route="/trabajos">Portafolio Completo</a></li>
+          <li><a href="/sobre-mi" data-route="/sobre-mi">Acerca del autor</a></li>
+          <li><a href="/servicios" data-route="/servicios">Servicios & Producción</a></li>
+          <li><a href="/contacto" data-route="/contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col-contact">
+        <h4 class="footer-title">Contacto Directo</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:contacto@carlosmendoza.com" id="footer-email">contacto@carlosmendoza.com</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" id="footer-instagram">Instagram</a></li>
+          <li><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" id="footer-whatsapp">WhatsApp Directo</a></li>
+          <li><a href="/admin" data-route="/admin" class="admin-quicklink">Panel CMS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <span class="copyright">© <span id="current-year">2026</span> Carlos Mendoza. Todos los derechos reservados.</span>
+        <span class="footer-meta">Diseño editorial minimalista para creadores visuales.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox / Fullscreen Image & Video Viewer -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="lightbox-overlay" id="lightbox-overlay"></div>
+    
+    <div class="lightbox-header">
+      <div class="lightbox-info">
+        <span class="lightbox-title" id="lightbox-title">Título</span>
+        <span class="lightbox-counter" id="lightbox-counter">1 / 1</span>
+      </div>
+      <div class="lightbox-actions">
+        <button class="lightbox-btn" id="lightbox-close" aria-label="Cerrar (Esc)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="lightbox-body" id="lightbox-body">
+      <!-- Image or Video injected dynamically -->
+    </div>
+
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Anterior (Flecha izquierda)">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Siguiente (Flecha derecha)">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Core Scripts -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

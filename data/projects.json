@@ -1,0 +1,326 @@
+[
+  {
+    "id": "proj-1",
+    "title": "Luz del Norte",
+    "slug": "luz-del-norte",
+    "category": "fotografia",
+    "categoryName": "Fotografía",
+    "year": "2026",
+    "client": "Editorial Arquitectura & Paisaje",
+    "description": "Una exploración visual de las costas septentrionales durante el invierno. La serie documenta la interacción silenciosa entre la arquitectura de hormigón brutalista y la luz fría del amanecer atlántico.",
+    "coverImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=85",
+    "coverAspect": "horizontal",
+    "featured": true,
+    "published": true,
+    "order": 4,
+    "media": [
+      {
+        "id": "m-1",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2000&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+        "aspect": "horizontal",
+        "caption": "Amanecer en los acantilados de la costa norte",
+        "width": 2000,
+        "height": 1333
+      },
+      {
+        "id": "m-2",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=600&q=80",
+        "aspect": "vertical",
+        "caption": "Estructuras verticales y niebla matutina",
+        "width": 1200,
+        "height": 1800
+      },
+      {
+        "id": "m-3",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+        "aspect": "panoramic",
+        "caption": "Crestas montañosas bajo luz tenue",
+        "width": 2000,
+        "height": 1000
+      },
+      {
+        "id": "m-4",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80",
+        "aspect": "vertical",
+        "caption": "Bosque templado en atmósfera húmeda",
+        "width": 1200,
+        "height": 1600
+      }
+    ]
+  },
+  {
+    "id": "proj-2",
+    "title": "Silencio Cinematográfico",
+    "slug": "silencio-cinematografico",
+    "category": "video",
+    "categoryName": "Video",
+    "year": "2025",
+    "client": "Cortometraje Documental",
+    "description": "Pieza audiovisual sobre artesanos contemporáneos que preservan métodos ancestrales de talla en madera y forja. Filmado íntegramente en formato anamórfico con luz natural y sonido diegético directo.",
+    "coverImage": "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1600&q=85",
+    "coverAspect": "horizontal",
+    "featured": true,
+    "published": true,
+    "order": 5,
+    "media": [
+      {
+        "id": "m-v1",
+        "type": "video",
+        "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+        "thumbnail": "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=85",
+        "aspect": "panoramic",
+        "caption": "Tráiler oficial - Formato anamórfico 2.39:1",
+        "width": 1920,
+        "height": 804
+      },
+      {
+        "id": "m-5",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+        "aspect": "horizontal",
+        "caption": "Detalle de taller y textura de madera",
+        "width": 1600,
+        "height": 1067
+      },
+      {
+        "id": "m-6",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80",
+        "aspect": "vertical",
+        "caption": "Retrato del maestro artesano",
+        "width": 1200,
+        "height": 1600
+      }
+    ]
+  },
+  {
+    "id": "proj-3",
+    "title": "Retratos de Taller",
+    "slug": "retratos-de-taller",
+    "category": "retrato",
+    "categoryName": "Retrato",
+    "year": "2025",
+    "client": "Serie Personal",
+    "description": "Sesión íntima de retratos analógicos y digitales en medio formato a artistas plásticos en sus espacios de trabajo cotidianos, registrando la concentración y la honestidad del proceso creador.",
+    "coverImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85",
+    "coverAspect": "vertical",
+    "featured": true,
+    "published": true,
+    "order": 6,
+    "media": [
+      {
+        "id": "m-7",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+        "aspect": "vertical",
+        "caption": "Retrato en luz lateral suave",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "id": "m-8",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+        "aspect": "vertical",
+        "caption": "Mirada frontal y expresión natural",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "id": "m-9",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
+        "aspect": "vertical",
+        "caption": "Estudio de luz cenital",
+        "width": 1200,
+        "height": 1600
+      }
+    ]
+  },
+  {
+    "id": "proj-4",
+    "title": "Materia & Forma",
+    "slug": "materia-y-forma",
+    "category": "comercial",
+    "categoryName": "Comercial",
+    "year": "2025",
+    "client": "Firma de Diseño Escandinavo",
+    "description": "Campaña visual para la colección de mobiliario y objetos cerámicos. Composiciones sobrias con énfasis en la pureza de las líneas, texturas orgánicas y gradaciones tonales neutras.",
+    "coverImage": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1600&q=85",
+    "coverAspect": "horizontal",
+    "featured": true,
+    "published": true,
+    "order": 7,
+    "media": [
+      {
+        "id": "m-10",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1800&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+        "aspect": "horizontal",
+        "caption": "Silla de nogal y sombras rasantes",
+        "width": 1800,
+        "height": 1200
+      },
+      {
+        "id": "m-11",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=1200&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=600&q=80",
+        "aspect": "vertical",
+        "caption": "Cerámica gres y detalle de acabado mate",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "id": "m-12",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1800&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+        "aspect": "horizontal",
+        "caption": "Espacio interior y luz difusa de ventana",
+        "width": 1800,
+        "height": 1200
+      }
+    ]
+  },
+  {
+    "id": "proj-5",
+    "title": "Encuentros en Vivo",
+    "slug": "encuentros-en-vivo",
+    "category": "eventos",
+    "categoryName": "Eventos",
+    "year": "2024",
+    "client": "Festival de Música Acústica",
+    "description": "Documentación fotográfica y cobertura de video de conciertos íntimos y ensayos entre bastidores. Captura de la atmósfera emotiva y el dinamismo lumínico de las presentaciones nocturnas.",
+    "coverImage": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1600&q=85",
+    "coverAspect": "horizontal",
+    "featured": false,
+    "published": true,
+    "order": 8,
+    "media": [
+      {
+        "id": "m-13",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1800&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80",
+        "aspect": "horizontal",
+        "caption": "Momento cumbre en el escenario principal",
+        "width": 1800,
+        "height": 1200
+      },
+      {
+        "id": "m-14",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80",
+        "aspect": "vertical",
+        "caption": "Detalle de instrumento y manos",
+        "width": 1200,
+        "height": 1600
+      }
+    ]
+  },
+  {
+    "id": "proj-1791322538107",
+    "title": "Historias que todavía se cuentan con las manos",
+    "slug": "historias-que-todavia-se-cuentan-con-las-manos",
+    "category": "video",
+    "categoryName": "Video",
+    "year": "2026",
+    "client": "Cortometraje",
+    "description": "Historias que trascienden y siguen contando historias con las manos.",
+    "coverImage": "/uploads/original/1791322491101-a2973671553a-DO__A_CLETA.mp4",
+    "coverAspect": "panoramic",
+    "featured": true,
+    "published": true,
+    "order": 1,
+    "media": [
+      {
+        "id": "m-1791322491250-xen4e",
+        "type": "video",
+        "url": "/uploads/original/1791322491101-a2973671553a-DO__A_CLETA.mp4",
+        "thumbnail": "/uploads/original/1791322491101-a2973671553a-DO__A_CLETA.mp4",
+        "filename": "1791322491101-a2973671553a-DO__A_CLETA.mp4",
+        "originalName": "DOÃA CLETA.mp4",
+        "size": 115230149,
+        "aspect": "panoramic",
+        "caption": "Video Artesanal"
+      }
+    ],
+    "createdAt": "2026-10-06T21:35:38.107Z"
+  },
+  {
+    "id": "proj-1791322708372",
+    "title": "Consultorio de Dentista",
+    "slug": "consultorio-de-dentista",
+    "category": "video",
+    "categoryName": "Video",
+    "year": "2026",
+    "client": "Video",
+    "description": "Un consultorio que expresa esa sensación rara de estar en el medico.",
+    "coverImage": "/uploads/original/1791322634721-7ba5bd5ee91d-0722__1__2_.mp4",
+    "coverAspect": "panoramic",
+    "featured": true,
+    "published": true,
+    "order": 2,
+    "media": [
+      {
+        "id": "m-1791322634868-p7aj3",
+        "type": "video",
+        "url": "/uploads/original/1791322634721-7ba5bd5ee91d-0722__1__2_.mp4",
+        "thumbnail": "/uploads/original/1791322634721-7ba5bd5ee91d-0722__1__2_.mp4",
+        "filename": "1791322634721-7ba5bd5ee91d-0722__1__2_.mp4",
+        "originalName": "0722 (1)(2).mp4",
+        "size": 141383981,
+        "aspect": "panoramic",
+        "caption": ""
+      }
+    ],
+    "createdAt": "2026-10-06T21:38:28.372Z"
+  },
+  {
+    "id": "proj-1791322841233",
+    "title": "En medio de la hora dorada",
+    "slug": "en-medio-de-la-hora-dorada",
+    "category": "fotografia",
+    "categoryName": "Fotografía",
+    "year": "2026",
+    "client": "",
+    "description": "Luz que va y viene como los recuerdos,",
+    "coverImage": "/uploads/optimized/1791322749717-f41b838d2111-0809_3_.webp",
+    "coverAspect": "panoramic",
+    "featured": true,
+    "published": true,
+    "order": 3,
+    "media": [
+      {
+        "id": "m-1791322750088-p4mvw",
+        "type": "image",
+        "url": "/uploads/optimized/1791322749717-f41b838d2111-0809_3_.webp",
+        "thumbnail": "/uploads/thumbnails/1791322749717-f41b838d2111-0809_3_-thumb.webp",
+        "originalUrl": "/uploads/original/1791322749717-f41b838d2111-0809_3_.png",
+        "filename": "1791322749717-f41b838d2111-0809_3_.webp",
+        "originalName": "0809(3).png",
+        "width": 3380,
+        "height": 1440,
+        "aspect": "panoramic",
+        "caption": ""
+      }
+    ],
+    "createdAt": "2026-10-06T21:40:41.233Z"
+  }
+]
