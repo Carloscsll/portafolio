@@ -821,11 +821,15 @@ app.use((req, res) => {
 });
 
 // Start Server
-app.listen(PORT, () => {
-  console.log(`=========================================`);
-  console.log(`🎬 Portafolio Web iniciado con éxito`);
-  console.log(`📍 URL: http://localhost:${PORT}`);
-  console.log(`⚙️  Admin Panel: http://localhost:${PORT}/admin`);
-  console.log(`🔑 Contraseña por defecto: admin`);
-  console.log(`=========================================`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`=========================================`);
+    console.log(`🎬 Portafolio Web iniciado con éxito`);
+    console.log(`📍 URL: http://localhost:${PORT}`);
+    console.log(`⚙️  Admin Panel: http://localhost:${PORT}/admin`);
+    console.log(`🔑 Contraseña por defecto: admin`);
+    console.log(`=========================================`);
+  });
+}
+
+module.exports = app;

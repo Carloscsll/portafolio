@@ -2,12 +2,10 @@ node_modules/
 .DS_Store
 *.tmp
 .env
-uploads/original/*
-!uploads/original/.gitkeep
-uploads/optimized/*
-!uploads/optimized/.gitkeep
-uploads/thumbnails/*
-!uploads/thumbnails/.gitkeep
+# Ignore heavy raw video uploads over 50MB (host on YouTube/Vimeo/Cloudinary instead)
+uploads/original/*.mp4
+uploads/original/*.mov
+uploads/original/*.webm
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

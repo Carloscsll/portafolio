@@ -419,9 +419,7 @@ async function renderProject(slug) {
           if (item.type === 'video') {
             return `
               <div class="gallery-row cols-1">
-                <div class="video-wrapper">
-                  <video src="${item.url}" controls playsinline poster="${item.thumbnail || ''}"></video>
-                </div>
+                ${createVideoPlayerHTML(item)}
                 ${item.caption ? `<p class="gallery-caption">${item.caption}</p>` : ''}
               </div>
             `;
@@ -695,6 +693,26 @@ function renderNotFound(msg = 'Página no encontrada') {
   `;
 }
 
+// Helper to create video player supporting YouTube, Vimeo, and Direct Video URLs
+export function createVideoPlayerHTML(item) {
+  const url = (item.url || '').trim();
+  
+  // YouTube match
+  const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+  if (ytMatch) {
+    return `<div class="video-wrapper" style="position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; border-radius:var(--radius-xs);"><iframe src="https://www.youtube.com/embed/${ytMatch[1]}?rel=0&modestbranding=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></iframe></div>`;
+  }
+
+  // Vimeo match
+  const vimeoMatch = url.match(/(?:vimeo\.com\/)(\d+)/);
+  if (vimeoMatch) {
+    return `<div class="video-wrapper" style="position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; border-radius:var(--radius-xs);"><iframe src="https://player.vimeo.com/video/${vimeoMatch[1]}?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></iframe></div>`;
+  }
+
+  // Standard video tag
+  return `<div class="video-wrapper"><video src="${url}" controls playsinline poster="${item.thumbnail || ''}" style="width:100%; max-height:85vh;"></video></div>`;
+}
+
 // --------------------------------------------------------------------------
 // LIGHTBOX FULLSCREEN LOGIC
 // --------------------------------------------------------------------------
@@ -729,7 +747,9 @@ function updateLightboxContent() {
 
   if (currentItem.type === 'video') {
     lightboxBody.innerHTML = `
-      <video src="${currentItem.url}" controls autoplay playsinline></video>
+      <div style="width: 85vw; max-width: 1100px;">
+        ${createVideoPlayerHTML(currentItem)}
+      </div>
     `;
   } else {
     lightboxBody.innerHTML = `

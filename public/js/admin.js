@@ -533,6 +533,24 @@ async function renderProjectEditorTab(container, projectId = null) {
           </div>
         </div>
 
+        <!-- Add Media by External URL (Vimeo, YouTube, Cloudinary, Web link) -->
+        <div style="margin-top: 1rem; background-color: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 1.25rem;">
+          <h4 style="font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; color: var(--text-secondary);">
+            🔗 O Añadir Video / Foto por Enlace Web (YouTube, Vimeo, Cloudinary, MP4 directo)
+          </h4>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <select id="ext-media-type" class="form-select" style="width: 140px; padding: 0.5rem 0.75rem; font-size: 0.8125rem;">
+              <option value="video">Video (Vimeo/YT/MP4)</option>
+              <option value="image">Fotografía (URL)</option>
+            </select>
+            <input type="url" id="ext-media-url" class="form-input" placeholder="Pega el enlace de Vimeo, YouTube o URL directa..." style="flex-grow: 1; padding: 0.5rem 0.75rem; font-size: 0.8125rem;" />
+            <input type="text" id="ext-media-caption" class="form-input" placeholder="Pie de foto / Título (opcional)" style="width: 220px; padding: 0.5rem 0.75rem; font-size: 0.8125rem;" />
+            <button type="button" class="btn-submit" id="btn-add-ext-media" style="padding: 0.5rem 1.25rem; font-size: 0.8125rem; white-space: nowrap;">
+              + Añadir al Proyecto
+            </button>
+          </div>
+        </div>
+
         <!-- Media Grid Preview & Ordering -->
         <div class="media-manager-grid" id="media-manager-grid">
           <!-- Rendered dynamically -->
@@ -569,6 +587,39 @@ async function renderProjectEditorTab(container, projectId = null) {
       handleFilesUpload(e.target.files);
     }
   });
+
+  // Add Media by External URL
+  const addExtBtn = document.getElementById('btn-add-ext-media');
+  if (addExtBtn) {
+    addExtBtn.addEventListener('click', () => {
+      const urlInput = document.getElementById('ext-media-url');
+      const typeSelect = document.getElementById('ext-media-type');
+      const captionInput = document.getElementById('ext-media-caption');
+
+      const url = urlInput.value.trim();
+      const type = typeSelect.value;
+      const caption = captionInput.value.trim();
+
+      if (!url) {
+        showToast('Por favor introduce un enlace o URL', 'error');
+        return;
+      }
+
+      uploadedMediaBuffer.push({
+        id: `m-ext-${Date.now()}`,
+        type,
+        url,
+        thumbnail: url,
+        caption: caption || '',
+        aspect: type === 'video' ? 'panoramic' : 'horizontal'
+      });
+
+      urlInput.value = '';
+      captionInput.value = '';
+      renderMediaManagerGrid();
+      showToast(`${type === 'video' ? 'Video' : 'Fotografía'} añadido a la galería`);
+    });
+  }
 
   // Cancel edit
   document.getElementById('btn-cancel-edit').addEventListener('click', () => {
