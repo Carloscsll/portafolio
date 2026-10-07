@@ -16,7 +16,7 @@ const DEFAULT_FALLBACK_SETTINGS = {
   instagram: "https://www.instagram.com/bycarloscasillas/",
   whatsapp: "+52 475-954-8030",
   vimeo: "",
-  profileImage: "/uploads/optimized/1791323595441-9bb65a0b4113-772171169_17939864538328972_8688357884332581097_n.webp",
+  profileImage: "",
   categories: [
     { id: "fotografia", name: "Fotografía" },
     { id: "video", name: "Video" },
