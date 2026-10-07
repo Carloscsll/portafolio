@@ -173,5 +173,25 @@
 
   <!-- Core Scripts -->
   <script type="module" src="/js/app.js"></script>
+  <script>
+    if (window.location.protocol === 'file:') {
+      setTimeout(() => {
+        const appRoot = document.getElementById('app-root');
+        if (appRoot && appRoot.querySelector('.page-loader')) {
+          appRoot.innerHTML = `
+            <div style="padding: 4rem 2rem; text-align: center; max-width: 600px; margin: 0 auto; color: #fff; font-family: sans-serif;">
+              <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">¡Abre la web en tu navegador!</h2>
+              <p style="color: #aaa; margin-bottom: 1.5rem; line-height: 1.6;">
+                Has abierto el archivo directo como <code>file://</code>. El servidor Node.js ya está activo. Por favor abre la siguiente dirección en tu navegador:
+              </p>
+              <a href="http://localhost:3000" style="display: inline-block; padding: 0.8rem 1.8rem; background: #ffffff; color: #000000; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 1rem;">
+                Abrir http://localhost:3000
+              </a>
+            </div>
+          `;
+        }
+      }, 800);
+    }
+  </script>
 </body>
 </html>
