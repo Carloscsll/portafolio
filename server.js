@@ -2,7 +2,12 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
-const sharp = require('sharp');
+let sharp;
+try {
+  sharp = require('sharp');
+} catch (e) {
+  console.warn('Sharp module not loaded:', e.message);
+}
 const cors = require('cors');
 const morgan = require('morgan');
 const crypto = require('crypto');

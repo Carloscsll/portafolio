@@ -25,6 +25,9 @@ const MESSAGES_FILE = path.join(DATA_DIR, 'messages.json');
 function readJsonFile(filePath, defaultValue) {
   try {
     if (fs.existsSync(filePath)) return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    const fileName = path.basename(filePath);
+    const repoDataPath = path.join(__dirname, '..', 'data', fileName);
+    if (fs.existsSync(repoDataPath)) return JSON.parse(fs.readFileSync(repoDataPath, 'utf-8'));
     return defaultValue;
   } catch (e) { return defaultValue; }
 }

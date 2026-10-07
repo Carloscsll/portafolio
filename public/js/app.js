@@ -54,10 +54,88 @@ const DEFAULT_FALLBACK_SETTINGS = {
   ]
 };
 
+const DEFAULT_FALLBACK_PROJECTS = [
+  {
+    id: "proj-1",
+    title: "Luz del Norte",
+    slug: "luz-del-norte",
+    category: "fotografia",
+    categoryName: "Fotografía",
+    year: "2026",
+    client: "Editorial Arquitectura & Paisaje",
+    description: "Una exploración visual de las costas septentrionales durante el invierno. La serie documenta la interacción silenciosa entre la arquitectura de hormigón brutalista y la luz fría del amanecer atlántico.",
+    coverImage: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=85",
+    coverAspect: "horizontal",
+    featured: true,
+    published: true,
+    order: 1,
+    media: [
+      {
+        id: "m-1",
+        type: "image",
+        url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2000&q=85",
+        thumbnail: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+        aspect: "horizontal",
+        caption: "Amanecer en los acantilados de la costa norte"
+      }
+    ]
+  },
+  {
+    id: "proj-2",
+    title: "Silencio Cinematográfico",
+    slug: "silencio-cinematografico",
+    category: "video",
+    categoryName: "Video",
+    year: "2025",
+    client: "Cortometraje Documental",
+    description: "Pieza audiovisual sobre artesanos contemporáneos que preservan métodos ancestrales de talla en madera y forja.",
+    coverImage: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1600&q=85",
+    coverAspect: "horizontal",
+    featured: true,
+    published: true,
+    order: 2,
+    media: [
+      {
+        id: "m-v1",
+        type: "video",
+        url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+        thumbnail: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=85",
+        aspect: "panoramic",
+        caption: "Tráiler oficial - Formato anamórfico 2.39:1"
+      }
+    ]
+  },
+  {
+    id: "proj-3",
+    title: "Retratos de Taller",
+    slug: "retratos-de-taller",
+    category: "retrato",
+    categoryName: "Retrato",
+    year: "2025",
+    client: "Serie Personal",
+    description: "Sesión íntima de retratos analógicos y digitales en medio formato a artistas plásticos en sus espacios de trabajo cotidianos.",
+    coverImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85",
+    coverAspect: "vertical",
+    featured: true,
+    published: true,
+    order: 3,
+    media: [
+      {
+        id: "m-7",
+        type: "image",
+        url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85",
+        thumbnail: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+        aspect: "vertical",
+        caption: "Retrato en luz lateral suave"
+      }
+    ]
+  }
+];
+
 // Global State
 export const state = {
   settings: DEFAULT_FALLBACK_SETTINGS,
-  projects: [],
+  projects: DEFAULT_FALLBACK_PROJECTS,
   categories: DEFAULT_FALLBACK_SETTINGS.categories,
   currentRoute: window.location.pathname,
   activeLightbox: {
@@ -109,7 +187,10 @@ export function showToast(message, type = 'success') {
 // --------------------------------------------------------------------------
 export async function fetchSettings() {
   try {
-    const res = await fetch('/api/settings');
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2000);
+    const res = await fetch('/api/settings', { signal: controller.signal });
+    clearTimeout(timeoutId);
     if (res.ok) {
       const data = await res.json();
       state.settings = { ...DEFAULT_FALLBACK_SETTINGS, ...data };
@@ -125,20 +206,35 @@ export async function fetchSettings() {
 export async function fetchProjects(category = '') {
   try {
     const query = category ? `?category=${encodeURIComponent(category)}` : '';
-    const res = await fetch(`/api/projects${query}`);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2000);
+    const res = await fetch(`/api/projects${query}`, { signal: controller.signal });
+    clearTimeout(timeoutId);
     if (res.ok) {
-      state.projects = await res.json();
-      return state.projects;
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        state.projects = data;
+        return state.projects;
+      }
     }
   } catch (err) {
     console.warn('Error al cargar proyectos del servidor:', err);
   }
-  return state.projects || [];
+  if (!state.projects || state.projects.length === 0) {
+    state.projects = DEFAULT_FALLBACK_PROJECTS;
+  }
+  if (category && category !== 'todos') {
+    return state.projects.filter(p => p.category === category);
+  }
+  return state.projects;
 }
 
 export async function fetchProjectBySlug(slug) {
   try {
-    const res = await fetch(`/api/projects/${encodeURIComponent(slug)}`);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2000);
+    const res = await fetch(`/api/projects/${encodeURIComponent(slug)}`, { signal: controller.signal });
+    clearTimeout(timeoutId);
     if (res.ok) return await res.json();
   } catch (err) {
     console.warn('Error fetching project:', err);
