@@ -10,9 +10,11 @@ const crypto = require('crypto');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Directories
-const DATA_DIR = path.join(__dirname, 'data');
-const UPLOADS_DIR = path.join(__dirname, 'uploads');
+// En Vercel el filesystem es read-only excepto /tmp
+// Detectamos el entorno y usamos /tmp para datos escritos
+const IS_VERCEL = !!process.env.VERCEL;
+const DATA_DIR = IS_VERCEL ? '/tmp/portfolio-data' : path.join(__dirname, 'data');
+const UPLOADS_DIR = IS_VERCEL ? '/tmp/portfolio-uploads' : path.join(__dirname, 'uploads');
 const OPTIMIZED_DIR = path.join(UPLOADS_DIR, 'optimized');
 const THUMBS_DIR = path.join(UPLOADS_DIR, 'thumbnails');
 const ORIGINAL_DIR = path.join(UPLOADS_DIR, 'original');
@@ -24,7 +26,7 @@ try {
     }
   });
 } catch (err) {
-  // Gracefully handle read-only environments (Vercel Serverless)
+  console.warn('Dir creation warning (expected on Vercel):', err.message);
 }
 
 // Database file helpers
